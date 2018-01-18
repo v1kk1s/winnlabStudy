@@ -11,4 +11,24 @@ router.post('/', async (req, res) => {
   res.send(await Book.create(req.body));
 });
 
+router.get('/:bookId', async (req, res) => {
+  await Book.findById(req.params.bookId, (err, book) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.send(book);
+    }
+  });
+});
+
+router.delete('/:bookId', async (req, res) => {
+  await Book.deleteOne({ _id: req.params.bookId }, (err, book) => {
+    if (err) {
+      res.status(500).send(err);
+    } else {
+      res.send(`Book ${req.params.bookId} was deleted!`);
+    }
+  });
+});
+
 export default router;
