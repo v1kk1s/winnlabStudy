@@ -31,4 +31,8 @@ router.delete('/:bookId', async (req, res) => {
   });
 });
 
+router.put('/:bookId', async (req, res) => {
+  await Book.findOneAndUpdate({ _id: req.params.bookId }, req.body);
+});
+
 export default router;
