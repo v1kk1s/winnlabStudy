@@ -1,0 +1,17 @@
+formulars
+INSERT
+INSERT INTO `formulars`(`id`, `user_id`, `alternative_id`, `txn_id`, `name`, `comment`, `notes`, `start_date`, `edit_date`, `end_date`, `send`, `new`, `status`, `paid`, `for_me`, `bill_sum`, `editable`, `stime`, `ftime`, `attempt`, `update`, `payment_type`, `page`) VALUES (666999, 666, 666, 'whatever_id', 'Viktoriya', 'no comments', 'no notes','2008-11-09 15:45:21', 1431861188, '2008-12-09 20:45:21', 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 'PAYPAL', 2)
+
+UPDATE
+UPDATE `formulars` SET `name`='Baheryan Viktoria' WHERE id='666999'
+UPDATE `formulars` SET `name`='Baheryan Viktoria' WHERE user_id='31' AND 'payment_type'='PAYPAL' AND 'update'=1
+
+DELETE
+DELETE FROM `formulars` WHERE id='666999'
+DELETE FROM `formulars` WHERE user_id='31' AND 'payment_type'='MANUAL' OR 'payment_type' IS NULL
+
+READ queries
+SELECT MAX(bill_sum) FROM `formulars` WHERE payment_type='CCARD'
+SELECT start_date, name FROM `formulars` WHERE paid=0 ORDER BY start_date
+SELECT COUNT(bill_sum) FROM `formulars` WHERE status=2 AND payment_type IS NOT NULL;
+SELECT user_id, name FROM `formulars` WHERE name LIKE '%sch%'
