@@ -1,0 +1,41 @@
+SELECT u.id, u.name, d.id AS department_id, d.name AS department_name FROM users u INNER JOIN departments d On u.department_id = d.id
+
+LEFT JOIN
+SELECT u.id, u.name, d.id AS department_id, d.name AS department_name FROM users u LEFT JOIN departments d On u.department_id = d.id
+(all users who doesnt have a department will be present in table but have value NULL for dep id and dep name)
+
+SELECT u.id, u.name, d.name AS department_name FROM users u LEFT JOIN departments d On u.department_id = d.id WHERE d.id IS NULL
+(select all guys who does not work in any department)
+
+RIGHT JOIN
+SELECT u.id, u.name, d.name AS department_name FROM users u RIGHT JOIN departments d On u.department_id = d.id
+
+SELECT u.id, u.name, d.name AS department_name FROM users u RIGHT JOIN departments d ON u.department_id = d.id WHERE u.id IS NULL
+(select all departments where there are no people)
+
+FULL JOIN
+SELECT u.id, u.name, d.name AS department_name FROM users u LEFT JOIN departments d ON u.department_id = d.id
+UNION
+SELECT u.id, u.name, d.name AS department_name FROM users u RIGHT JOIN departments d ON u.department_id = d.id
+
+SELECT u.id, u.name, d.name AS department_name FROM users u LEFT JOIN departments d ON u.department_id = d.id WHERE d.id IS NULL
+UNION
+SELECT u.id, u.name, d.name AS department_name FROM users u RIGHT JOIN departments d ON u.department_id = d.id WHERE u.id IS NULL
+
+
+SELECT DISTINCT name FROM `fruits`
+(returns unique values of column)
+
+SELECT CONCAT('Вид: ', name, '; Сорт: ', sort) FROM `fruits`
+
+HW
+greatest(), least()
+вибрати всі унікальні пари по дублюючому імені
+
+(id1, id2) and (id2, id1)
+
+має бути
+(1, 2)
+(1, 4)
+(2, 4)
+(3, 6)
